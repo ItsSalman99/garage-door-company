@@ -1,0 +1,64 @@
+.onlineReservationTopBar {
+  & > div {
+    // background: rgb(255, 177, 177);
+    width: calc(100% / 7);
+    &:not(:last-child) {
+      border-right: 1px solid var(--bs-border-color);
+    }
+    @media screen and (max-width: 576px) {
+      width: calc(100% / 3);
+    }
+  }
+}
+
+.onlineReservationTopBarActive {
+  color: var(--bs-primary);
+  h5 {
+    color: var(--bs-primary);
+  }
+  img {
+    filter: var(--image-primary-filter);
+  }
+}
+.onlineReservationSideMenus {
+  a {
+    color: #4f4f4f;
+    &.active,
+    &.activeBorderLeft {
+      background: rgb(var(--bs-primary-rgb), 0.07);
+      color: var(--bs-primary);
+      img {
+        filter: var(--image-primary-filter);
+      }
+    }
+    &.activeBorderLeft {
+      border-left: 3px solid var(--bs-primary);
+    }
+    &:not(.active):not(.activeBorderLeft):hover {
+      background: rgb(var(--bs-primary-rgb), 0.07);
+      color: var(--bs-primary);
+      i {
+        color: var(--bs-primary);
+      }
+      img:not(.notfilter) {
+        filter: var(--image-primary-filter);
+      }
+    }
+  }
+  @media screen and (max-width: 576px) {
+    li {
+      width: calc(100% / 4);
+    }
+  }
+}
+
+.cover-increment-number {
+  input {
+    width: 40px;
+    text-align: center;
+    min-height: 32px !important;
+    border: 1px solid var(--bs-primary);
+    background: rgb(var(--bs-primary-rgb), 0.2);
+    color: var(--bs-primary);
+  }
+}

@@ -1,0 +1,83 @@
+// upload image box v1
+.upload-image-box-v1 {
+  flex-shrink: 0;
+  label {
+    position: relative;
+    width: 105px;
+    aspect-ratio: 1 /1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px dashed #e7e4e4;
+    padding: 1rem;
+    text-align: center;
+
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+
+    margin: 0;
+    overflow: hidden;
+    p {
+      margin: 0;
+    }
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.productImageUpload {
+  width: 108px;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 2px dashed var(--bs-border-color);
+  cursor: pointer;
+
+  .trashIcon {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 18px;
+    font-size: 10px;
+    aspect-ratio: 1;
+    color: white;
+    display: grid;
+    place-content: center;
+    border-radius: 50%;
+    background: var(--bs-primary);
+    transition: 200ms;
+    transition-delay: 1s;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  img {
+    & ~ p {
+      opacity: 0;
+      visibility: hidden;
+    }
+    &[src] {
+      & ~ p {
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 1s;
+        color: white;
+      }
+      & + .trashIcon {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}

@@ -1,0 +1,143 @@
+.according-style-2 {
+  .accordion-item {
+    border: 0;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 3px 0px #eeeeee;
+
+    .accordion-header {
+      padding: 0;
+      border: 0;
+      button {
+        background-color: white;
+        position: relative;
+        color: #151515;
+        font-weight: normal;
+        padding: 25px 40px 25px 30px;
+        display: block;
+        line-height: normal;
+        font-weight: 600;
+        font-size: 24px;
+        span {
+          opacity: 0;
+          visibility: hidden;
+          transition: 100ms;
+        }
+        &::after {
+          content: "\F2EA";
+          font-family: "bootstrap-Icons";
+          font-size: 33px;
+          font-weight: normal;
+          position: absolute;
+          right: 2rem;
+          top: 50%;
+          text-align: center;
+          background-image: none;
+          @include transform(translateY(-50%));
+          background: #f2f2f2;
+          width: 36px;
+          height: 36px;
+          border-radius: 4px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        &[aria-expanded="false"] {
+          span {
+            opacity: 1;
+            visibility: visible;
+          }
+          &::after {
+            content: "\F4FE";
+          }
+        }
+        &:not(.collapsed) {
+          box-shadow: none;
+        }
+      }
+      &:hover {
+        button {
+          color: var(--primary-clr);
+        }
+      }
+    }
+    .accordion-body {
+      border-top: 0;
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+.according-style-3 {
+  // margin-inline: -1rem;
+  .accordion-item {
+    border-inline: 0;
+    margin-bottom: 10px;
+    border-radius: 0;
+    .accordion-header {
+      padding: 0;
+      border: 0;
+      button {
+        background-color: #f8f8f8;
+        position: relative;
+        color: var(--bs-primary);
+        font-weight: normal;
+        padding: 15px 40px 15px 15px;
+        display: block;
+        line-height: normal;
+        font-weight: 500;
+        font-size: 16px;
+        img:not(.notfilter) {
+          filter: var(--image-primary-filter);
+        }
+        &::after {
+          content: "\F2EA";
+          font-family: "bootstrap-Icons";
+          font-size: 27px;
+          font-weight: normal;
+          position: absolute;
+          right: 15px;
+          top: 50%;
+          text-align: center;
+          line-height: 1.25rem;
+          background-image: none;
+          @include transform(translateY(-50%));
+        }
+        &[aria-expanded="false"] {
+          color: var(--bs-dark);
+          &::after {
+            content: "\F4FE";
+            color: var(--bs-dark);
+          }
+          img:not(.notfilter) {
+            filter: inherit;
+          }
+        }
+        &:not(.collapsed) {
+          box-shadow: none;
+        }
+        &.toggleIconLeft {
+          &::after {
+            left: 15px;
+            right: inherit;
+          }
+        }
+      }
+      &:hover {
+        button {
+          color: var(--bs-primary);
+          img:not(.notfilter) {
+            filter: var(--image-primary-filter);
+          }
+        }
+      }
+    }
+    .accordion-body {
+      background: #f8f8f8;
+      border-top: 0;
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

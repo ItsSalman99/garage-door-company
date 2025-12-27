@@ -1,0 +1,135 @@
+// sales card
+.salesCard {
+  .icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    padding: 11px;
+    background: rgb(var(--bs-primary-rgb), 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+// ckedit height
+.ck.ck-editor__editable_inline {
+  min-height: 200px;
+  padding-inline: calc(var(--ck-spacing-unit) * 1.5) !important;
+}
+.ck-toolbar {
+  border-color: var(--bs-border-color) !important;
+  border-bottom-width: 1px !important;
+}
+.ck.ck-editor__editable:not(.ck-editor__nested-editable).ck-focused {
+  border-color: var(--bs-primary) !important;
+  box-shadow: none !important;
+}
+.ck-content {
+  background: rgba(247, 247, 247, 0.5) !important;
+  p {
+    color: #363232 !important;
+    opacity: 0.5 !important;
+  }
+}
+.ck.ck-editor__main > .ck-editor__editable:not(.ck-focused) {
+  border-color: var(--bs-border-color) !important;
+}
+// .ck.ck-reset.ck-editor {
+//   display: flex;
+//   flex-direction: column-reverse;
+// }
+.ck.ck-list__item .ck-button.ck-on {
+  background: var(--bs-primary) !important;
+}
+
+.ck .ck-insert-table-dropdown-grid-box.ck-on {
+  border-color: var(--bs-primary) !important;
+  background: opacify(rgba(#e46c3f, 0), 0.3) !important;
+}
+
+// rating card
+
+.orderInfoArea {
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 0.9rem;
+
+  p {
+    margin: 0;
+    width: 70px;
+  }
+  .bar {
+    position: relative;
+    width: 164px;
+    background: rgba(var(--bs-primary-rgb), 0.3);
+    height: 6px;
+    overflow: hidden;
+    border-radius: 10px;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--fill-bar);
+      height: 100%;
+      background: var(--bs-primary);
+      border-radius: 10px;
+    }
+    &.dark {
+      background: rgb(79, 79, 79, 0.3);
+      &::before {
+        background: #4f4f4f;
+      }
+    }
+    &.yellow {
+      background: rgb(255, 163, 89, 0.3);
+      &::before {
+        background: #ffa359;
+      }
+    }
+  }
+}
+
+// tags
+:root {
+  --tagify-dd-item-pad: 8px 17px;
+}
+
+.tagify__dropdown__item--active {
+  background: rgb(var(--bs-primary-rgb), 0.1);
+  color: var(--bs-primary);
+
+  // --tagify-dd-item-pad: 10px;
+}
+.tagify__dropdown__wrapper {
+  border-color: var(--bs-border-color);
+}
+.tagify__dropdown__item {
+  font-size: 15px;
+}
+
+.checkboxsList {
+  li {
+    a {
+      margin-bottom: 10px;
+      color: inherit;
+      display: block;
+    }
+  }
+}
+
+// activePaymentMethord
+.activePaymentMethord {
+  background: rgba(var(--bs-primary-rgb), 0.1);
+  color: var(--bs-primary);
+  border-color: var(--bs-primary);
+  h4 {
+    color: var(--bs-primary);
+  }
+  i {
+    background: var(--bs-primary);
+    color: white !important;
+    border-color: var(--bs-primary);
+  }
+}
