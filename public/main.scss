@@ -1,0 +1,104 @@
+//####################
+// START VARIABALES
+// #####################
+
+:root {
+  --image-primary-filter: invert(37%) sepia(63%) saturate(7681%)
+    hue-rotate(322deg) brightness(97%) contrast(95%);
+  --section-padding: 80px 0;
+  --heading-clr: #121212;
+  --black-btn-clr: #181818;
+  --anker-hover-clr: #181818;
+  --sidebarwidth: 294px;
+  --nagativesidebarwidth: -294px;
+}
+div#frontdashboard2 {
+  transform: translateX(-25px);
+}
+
+.link-primary {
+  &:hover {
+    color: var(--anker-hover-clr) !important;
+  }
+}
+.primary-border-hover {
+  &:hover {
+    border-color: var(--bs-primary) !important;
+  }
+}
+.text-primary-hover {
+  &:hover {
+    .hover-this {
+      color: var(--bs-primary);
+    }
+  }
+}
+.bg-primary-hover {
+  &:hover {
+    background: rgba(var(--bs-primary-rgb), var(--bg-primary-hover)) !important;
+    img:not(.notfilter) {
+      filter: var(--image-primary-filter);
+    }
+  }
+}
+.secondary-anchor {
+  color: var(--secondary-clr) !important;
+  &:hover {
+    color: var(--bs-primary) !important;
+  }
+}
+.link-dark {
+  &:hover {
+    color: var(--bs-primary) !important;
+  }
+}
+
+.secondary-bg {
+  background: var(--secondary-clr) !important;
+}
+
+.secondary-text {
+  color: var(--secondary-clr) !important;
+}
+
+.apexcharts-toolbar {
+  display: none !important;
+}
+.xdsoft_datetimepicker,
+.dropdown-menu:not(.dropdown-sub-menu).show,
+span.select2-dropdown.select2-dropdown--below,
+span.select2-dropdown.select2-dropdown--above {
+  box-shadow: 0 0 0 300vw rgb(0 0 0 / 50%) !important;
+}
+
+//####################
+// END VARIABALES
+// #####################
+//####################
+// START IMPORT FILES
+// #####################
+@import "assets/sass/_all_components";
+//####################
+// END IMPORT FILES
+// #####################
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 0.6em;
+  background: #fafafa;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bs-primary);
+  // height: 1em;
+  border-radius: 100vw;
+  //border-radius: 35px 0px 0px 35px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::selection {
+  color: var(--bs-primary);
+  background: rgba(var(--bs-primary-rgb), 0.1);
+  text-shadow: none;
+}
