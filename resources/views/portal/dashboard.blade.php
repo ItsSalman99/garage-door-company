@@ -1,6 +1,8 @@
 @extends('portal.layout.main')
 
 @section('content')
+
+
 <div class="cover-all-content">
     <div class="page-title d-flex align-items-center justify-content-between gap-3 flex-wrap">
         <h2>Dashboard</h2>
@@ -13,8 +15,13 @@
                         <div class="user-area d-flex align-items-center justify-content-center justify-content-lg-start flex-wrap gap-3">
                             <img src="assets/images/user.png" alt="" style="width: 100px; aspect-ratio: 1">
                             <div class="text-center text-lg-start">
-                                <h3 class="text-primary font-25px font-md-32px">Hi, <span class=" font-weight-600">John Smith</span></h3>
-                                <h5 class="text-dark font-16px font-md-20px font-weight-400 m-0">Welcome to Resfoody Admin! </h5>
+                                <h3 class="text-primary font-25px font-md-32px">
+                                    Hi,
+                                    <span class=" font-weight-600">
+                                        {{ auth()->user()->full_name }}
+                                    </span>
+                            </h3>
+                            <h5 class="text-dark font-16px font-md-20px font-weight-400 m-0">Welcome to portal! </h5>
                             </div>
                         </div>
                     </div>

@@ -34,15 +34,15 @@
                             <div class="sb-sidenav-menu-heading pb-3">
                                 <h4 class="font-14px m-0 opacity-07 font-weight-500 text-uppercase">Main Menu</h4>
                             </div>
-                            <a class="nav-link active" href="home.php">
+                            <a class="nav-link active" href="{{ route('portal.dashboard') }}">
                                 <div class="sb-nav-link-icon"><img src="assets/images/icons/sidemenus/Dashboard.svg"
                                         alt=""></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link " href="order.php">
-                                <div class="sb-nav-link-icon"><img src="assets/images/icons/sidemenus/order.svg"
+                            <a class="nav-link " href="#.">
+                                <div class="sb-nav-link-icon"><img src="assets/images/icons/sidemenus/Marketplace.svg"
                                         alt=""></div>
-                                Orders
+                                Products
                             </a>
                         </div>
                     </div>
