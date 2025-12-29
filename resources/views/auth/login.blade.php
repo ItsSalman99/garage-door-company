@@ -32,9 +32,9 @@
                         <div class="col-md-12">
                             <div class="text-center my-3">
                                 <ul>
-                                    <li><a href="forgetPassword.php"
+                                    {{-- <li><a href="forgetPassword.php"
                                             class="primary-anchor text-decoration-underline font-14px">Forget Password?</a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                         </div>
