@@ -20,7 +20,7 @@ class TechnicianSeeder extends Seeder
             [
                 'full_name' => 'John',
                 'password' => Hash::make('tech123'),
-                'phone' => '',
+                'phone' => '1232112312',
                 'status' => true,
                 'email_verified_at' => now(),
             ]

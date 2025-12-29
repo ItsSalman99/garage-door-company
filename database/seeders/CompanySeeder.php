@@ -37,7 +37,7 @@ class CompanySeeder extends Seeder
             [
                 'full_name' => 'Buffalo Garage Doors',
                 'password' => Hash::make('company123'),
-                'phone' => '',
+                'phone' => '12312421123',
                 'status' => true,
                 'email_verified_at' => now(),
             ]
