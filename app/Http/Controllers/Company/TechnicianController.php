@@ -57,4 +57,19 @@ class TechnicianController extends Controller
         return view('portal.technicians.show', get_defined_vars());
 
     }
+
+
+    public function delete($id)
+    {
+        $user = User::where('id', $id)->first();
+
+        if($user)
+        {
+            $user->delete();
+        }
+
+        return redirect()->back();
+
+    }
+
 }

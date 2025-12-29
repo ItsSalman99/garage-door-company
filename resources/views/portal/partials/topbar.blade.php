@@ -11,23 +11,6 @@
                 {{-- <img src="{{ asset('assets/images/logo.svg') }}" alt="" class="width-60 width-md-80"> --}}
             </div>
             <ul class="navbar-nav ms-auto me-lg-0 me-2 align-items-center gap-3">
-                <li class="nav-item dropdown search position-relative">
-                    <a href="#" class="nav-link dropdown-toggle caret-none p-0" data-bs-toggle="dropdown"
-                        role="button" aria-expanded="false">
-                        <img src="{{ asset('assets/images/icons/topBarIcons/search.svg') }}"
-                            alt="" data-bs-toggle="tooltip" data-bs-title="Search"
-                            style="width: auto; max-width: initial"></a>
-                    <ul class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="navbarDropdown">
-                        <input type="search" placeholder="search here....">
-                    </ul>
-                </li>
-                <li class="nav-item dropdown search position-relative">
-                    <a href="#" class="nav-link p-0" data-bs-toggle="dropdown" role="button"
-                        aria-expanded="false"><img src="{{ asset('assets/images/icons/topBarIcons/message.svg') }}" alt=""
-                            data-bs-toggle="tooltip" data-bs-title="Messages"
-                            style="width: auto; max-width: initial"></a>
-
-                </li>
                 <li class="nav-item dropdown bell position-relative">
                     <div class="notify-dot"></div>
                     <a href="#" class="nav-link dropdown-toggle caret-none p-0" data-bs-toggle="dropdown"

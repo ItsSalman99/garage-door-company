@@ -35,11 +35,12 @@
                                 <h4 class="font-14px m-0 opacity-07 font-weight-500 text-uppercase">Main Menu</h4>
                             </div>
                             <a class="nav-link active" href="{{ route('portal.dashboard') }}">
-                                <div class="sb-nav-link-icon"><img src="{{ asset('assets/images/icons/sidemenus/Dashboard.svg') }}"
-                                        alt=""></div>
+                                <div class="sb-nav-link-icon"><img
+                                        src="{{ asset('assets/images/icons/sidemenus/Dashboard.svg') }}" alt="">
+                                </div>
                                 Dashboard
                             </a>
-                            @if(auth()->user()->hasRole('company'))
+                            @if (auth()->user()->hasRole('company'))
                                 <a class="nav-link " href="{{ route('portal.technicians.index') }}">
                                     <div class="sb-nav-link-icon">
                                         <img src="{{ asset('assets/images/icons/sidemenus/Customers.svg') }}"
@@ -48,18 +49,48 @@
                                     Technicians
                                 </a>
                             @endif
-                            <a class="nav-link " href="#.">
-                                <div class="sb-nav-link-icon">
-                                    <img src="{{ asset('assets/images/icons/sidemenus/Marketplace.svg') }}"
+
+                            <a class="nav-link collapsed sidenav-active" href="#" data-bs-toggle="collapse"
+                                data-bs-target="#Products" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><img
+                                        src="{{ asset('assets/images/icons/sidemenus/Marketplace.svg') }}"
                                         alt=""></div>
-                                Products
+                                Product Catalog
+                                <div class="sb-sidenav-collapse-arrow"><i class="bi bi-chevron-down"></i></div>
                             </a>
-                            <a class="nav-link " href="#.">
-                                <div class="sb-nav-link-icon">
-                                    <img src="{{ asset('assets/images/icons/sidemenus/Inventory.svg') }}"
+                            <div class="collapse" id="Products" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested">
+                                    <a class="nav-link" href="{{ route('portal.products.categories.index') }}">
+                                        Product Categories
+                                    </a>
+                                </nav>
+                                <nav class="sb-sidenav-menu-nested">
+                                    <a class="nav-link " href="{{ route('portal.products.index') }}">
+                                        Products
+                                    </a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed sidenav-active" href="#" data-bs-toggle="collapse"
+                                data-bs-target="#Services" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><img
+                                        src="{{ asset('assets/images/icons/sidemenus/Inventory.svg') }}"
                                         alt=""></div>
-                                Services
+                                Service Catalog
+                                <div class="sb-sidenav-collapse-arrow"><i class="bi bi-chevron-down"></i></div>
                             </a>
+                            <div class="collapse" id="Services" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested">
+                                    <a class="nav-link" href="{{ route('portal.services.categories.index') }}">
+                                        Service Categories
+                                    </a>
+                                </nav>
+                                <nav class="sb-sidenav-menu-nested">
+                                    <a class="nav-link " href="{{ route('portal.services.index') }}">
+                                        Services
+                                    </a>
+                                </nav>
+                            </div>
+
                         </div>
                     </div>
                 </div>
