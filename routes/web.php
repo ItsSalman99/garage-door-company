@@ -23,6 +23,8 @@ Route::prefix('portal')
 
             Route::get('/', [TechnicianController::class, 'index'])
             ->name('index');
+            Route::post('/store', [TechnicianController::class, 'store'])
+            ->name('store');
 
         });
 

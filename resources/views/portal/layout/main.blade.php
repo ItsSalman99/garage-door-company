@@ -16,5 +16,7 @@
     @yield('content')
 
     @include('partials.footer')
+
+    @stack('extra-js')
 </body>
 </html>
