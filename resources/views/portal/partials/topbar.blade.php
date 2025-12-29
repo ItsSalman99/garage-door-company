@@ -8,12 +8,13 @@
             </div>
 
             <div class="logo-sm d-block d-lg-none">
-                <img src="assets/images/logo.svg" alt="" class="width-60 width-md-80">
+                {{-- <img src="{{ asset('assets/images/logo.svg') }}" alt="" class="width-60 width-md-80"> --}}
             </div>
             <ul class="navbar-nav ms-auto me-lg-0 me-2 align-items-center gap-3">
                 <li class="nav-item dropdown search position-relative">
                     <a href="#" class="nav-link dropdown-toggle caret-none p-0" data-bs-toggle="dropdown"
-                        role="button" aria-expanded="false"><img src="assets/images/icons/topBarIcons/search.svg"
+                        role="button" aria-expanded="false">
+                        <img src="{{ asset('assets/images/icons/topBarIcons/search.svg') }}"
                             alt="" data-bs-toggle="tooltip" data-bs-title="Search"
                             style="width: auto; max-width: initial"></a>
                     <ul class="dropdown-menu dropdown-menu-end p-3" aria-labelledby="navbarDropdown">
@@ -22,7 +23,7 @@
                 </li>
                 <li class="nav-item dropdown search position-relative">
                     <a href="#" class="nav-link p-0" data-bs-toggle="dropdown" role="button"
-                        aria-expanded="false"><img src="assets/images/icons/topBarIcons/message.svg" alt=""
+                        aria-expanded="false"><img src="{{ asset('assets/images/icons/topBarIcons/message.svg') }}" alt=""
                             data-bs-toggle="tooltip" data-bs-title="Messages"
                             style="width: auto; max-width: initial"></a>
 
@@ -30,7 +31,7 @@
                 <li class="nav-item dropdown bell position-relative">
                     <div class="notify-dot"></div>
                     <a href="#" class="nav-link dropdown-toggle caret-none p-0" data-bs-toggle="dropdown"
-                        role="button" aria-expanded="false"><img src="assets/images/icons/topBarIcons/bell.svg"
+                        role="button" aria-expanded="false"><img src="{{ asset('assets/images/icons/topBarIcons/bell.svg') }}"
                             alt="" data-bs-toggle="tooltip" data-bs-title="Notifications"
                             style="width: auto; max-width: initial"></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -96,84 +97,20 @@
                             </a>
                         </li>
                         <li class="dropstart dropdown position-relative">
-                            <a class="dropdown-item dropdown-toggle caret-none" data-bs-auto-close="outside"
-                                href="#." data-bs-toggle="dropdown" role="button" aria-expanded="false">
+                            <a class="dropdown-item caret-none text-danger" href="#"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+
                                 <div class="d-flex align-items-center gap-2">
-                                    <i class="bi bi-arrow-repeat font-22px"></i>
-                                    <p class="m-0 d-flex align-items-center justify-content-between flex-1">Switch
-                                        Account <i class="bi bi-caret-right-fill opacity-07 ms-5 font-12px"></i></p>
-                                </div>
-                            </a>
-                            <ul class="dropdown-menu dropdown-sub-menu" style="min-width: 177px; max-width:200px;"
-                                aria-labelledby="navbarDropdown">
-                                <li><a href="#" class=" dropdown-item" data-bs-toggle="tooltip"
-                                        data-bs-title="Blue Limits">
-                                        <p class="mb-0 font-15px font-weight-400 mb-n1 text-truncate">Blue Limits</p>
-                                        <small class=" font-11px">998978</small>
-                                    </a></li>
-                                <li><a href="#" class=" dropdown-item" data-bs-toggle="tooltip"
-                                        data-bs-title="HillTown Cafe">
-                                        <p class="mb-0 font-15px font-weight-400 mb-n1 text-truncate">HillTown Cafe</p>
-                                        <small class=" font-11px">998978</small>
-                                    </a></li>
-                                <li><a href="#" class=" dropdown-item" data-bs-toggle="tooltip"
-                                        data-bs-title="Illinois Track">
-                                        <p class="mb-0 font-15px font-weight-400 mb-n1 text-truncate">Illinois Track
-                                        </p>
-                                        <small class=" font-11px">998978</small>
-                                    </a></li>
-                                <li><a href="#" class=" dropdown-item" data-bs-toggle="tooltip"
-                                        data-bs-title="Boho Beach">
-                                        <p class="mb-0 font-15px font-weight-400 mb-n1 text-truncate">Boho Beach</p>
-                                        <small class=" font-11px">998978</small>
-                                    </a></li>
-                                <li><a href="#" class=" dropdown-item" data-bs-toggle="tooltip"
-                                        data-bs-title="Famous Cafe">
-                                        <p class="mb-0 font-15px font-weight-400 mb-n1 text-truncate">Famous Cafe</p>
-                                        <small class=" font-11px">998978</small>
-                                    </a></li>
-                            </ul>
-                        </li>
-                        <li class="dropstart dropdown position-relative">
-                            <a class="dropdown-item dropdown-toggle caret-none" data-bs-auto-close="outside"
-                                href="#." data-bs-toggle="dropdown" role="button" aria-expanded="false">
-                                <div class="d-flex align-items-center gap-2 text-danger">
                                     <i class="bi bi-power font-22px"></i>
-                                    <p class="m-0 d-flex align-items-center justify-content-between flex-1"
-                                        style="color: inherit;">Signout<i
-                                            class="bi bi-caret-right-fill opacity-07 ms-5 font-12px"></i></p>
+                                    <p class="m-0 flex-1">Signout</p>
                                 </div>
                             </a>
-                            <ul class="dropdown-menu dropdown-sub-menu" style="min-width: 177px; max-width:200px;"
-                                aria-labelledby="navbarDropdown">
-                                <li><a href="index.php" class=" dropdown-item" data-bs-toggle="tooltip"
-                                        data-bs-title="Blue Limits">
-                                        <p class="mb-0 font-15px font-weight-400 mb-n1 text-truncate">Blue Limits</p>
-                                        <small class=" font-11px">998978</small>
-                                    </a></li>
-                                <li><a href="index.php" class=" dropdown-item" data-bs-toggle="tooltip"
-                                        data-bs-title="HillTown Cafe">
-                                        <p class="mb-0 font-15px font-weight-400 mb-n1 text-truncate">HillTown Cafe</p>
-                                        <small class=" font-11px">998978</small>
-                                    </a></li>
-                                <li><a href="index.php" class=" dropdown-item" data-bs-toggle="tooltip"
-                                        data-bs-title="Illinois Track">
-                                        <p class="mb-0 font-15px font-weight-400 mb-n1 text-truncate">Illinois Track
-                                        </p>
-                                        <small class=" font-11px">998978</small>
-                                    </a></li>
-                                <li><a href="index.php" class=" dropdown-item" data-bs-toggle="tooltip"
-                                        data-bs-title="Boho Beach">
-                                        <p class="mb-0 font-15px font-weight-400 mb-n1 text-truncate">Boho Beach</p>
-                                        <small class=" font-11px">998978</small>
-                                    </a></li>
-                                <li><a href="index.php" class=" dropdown-item" data-bs-toggle="tooltip"
-                                        data-bs-title="Famous Cafe">
-                                        <p class="mb-0 font-15px font-weight-400 mb-n1 text-truncate">Famous Cafe</p>
-                                        <small class=" font-11px">998978</small>
-                                    </a></li>
-                            </ul>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </li>
+
                     </ul>
                 </li>
 

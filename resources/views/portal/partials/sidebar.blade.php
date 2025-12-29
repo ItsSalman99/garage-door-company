@@ -35,14 +35,28 @@
                                 <h4 class="font-14px m-0 opacity-07 font-weight-500 text-uppercase">Main Menu</h4>
                             </div>
                             <a class="nav-link active" href="{{ route('portal.dashboard') }}">
-                                <div class="sb-nav-link-icon"><img src="assets/images/icons/sidemenus/Dashboard.svg"
+                                <div class="sb-nav-link-icon"><img src="{{ asset('assets/images/icons/sidemenus/Dashboard.svg') }}"
                                         alt=""></div>
                                 Dashboard
                             </a>
+                            <a class="nav-link " href="{{ route('portal.technicians.index') }}">
+                                <div class="sb-nav-link-icon">
+                                    <img src="{{ asset('assets/images/icons/sidemenus/Customers.svg') }}"
+                                        alt="">
+                                </div>
+                                Technicians
+                            </a>
                             <a class="nav-link " href="#.">
-                                <div class="sb-nav-link-icon"><img src="assets/images/icons/sidemenus/Marketplace.svg"
+                                <div class="sb-nav-link-icon">
+                                    <img src="{{ asset('assets/images/icons/sidemenus/Marketplace.svg') }}"
                                         alt=""></div>
                                 Products
+                            </a>
+                            <a class="nav-link " href="#.">
+                                <div class="sb-nav-link-icon">
+                                    <img src="{{ asset('assets/images/icons/sidemenus/Inventory.svg') }}"
+                                        alt=""></div>
+                                Services
                             </a>
                         </div>
                     </div>
