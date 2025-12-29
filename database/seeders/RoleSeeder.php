@@ -18,5 +18,10 @@ class RoleSeeder extends Seeder
             'name' => 'company',
             'guard_name' => 'web'
         ]);
+        $technicianRole = Role::firstOrCreate([
+            'name' => 'technician',
+            'guard_name' => 'web'
+        ]);
+
     }
 }
