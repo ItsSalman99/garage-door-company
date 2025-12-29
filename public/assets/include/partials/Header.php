@@ -1,11 +1,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>ResFoody</title>
+<title>Garage Door Company</title>
 <meta name="robots" content="index, follow" />
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<meta name="author" content="ResFoody" />
+<meta name="author" content="Garage Door Company" />
 <meta name="copyright" content="" />
 <link rel="stylesheet" href="vendor/css/bootstrap/bootstrap.min.css">
 <!-- data table -->
