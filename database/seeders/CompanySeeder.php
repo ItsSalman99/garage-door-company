@@ -31,5 +31,21 @@ class CompanySeeder extends Seeder
             $user->assignRole('company');
         }
 
+         // 2️⃣ Create company user
+        $user2 = User::updateOrCreate(
+            ['email' => 'buffalo@company.com'],   // unique check
+            [
+                'full_name' => 'Buffalo Garage Doors',
+                'password' => Hash::make('company123'),
+                'phone' => '',
+                'status' => true,
+                'email_verified_at' => now(),
+            ]
+        );
+
+        // 3️⃣ Assign Spatie Role
+        if (!$user->hasRole('company')) {
+            $user->assignRole('company');
+        }
     }
 }
