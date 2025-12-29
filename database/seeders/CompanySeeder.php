@@ -44,8 +44,8 @@ class CompanySeeder extends Seeder
         );
 
         // 3️⃣ Assign Spatie Role
-        if (!$user->hasRole('company')) {
-            $user->assignRole('company');
+        if (!$user2->hasRole('company')) {
+            $user2->assignRole('company');
         }
     }
 }
