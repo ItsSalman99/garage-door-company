@@ -49,4 +49,12 @@ class TechnicianController extends Controller
         ]);
 
     }
+
+    public function show($id)
+    {
+        $user = User::where('id', $id)->first();
+
+        return view('portal.technicians.show', get_defined_vars());
+
+    }
 }

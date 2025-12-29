@@ -25,6 +25,8 @@ Route::prefix('portal')
             ->name('index');
             Route::post('/store', [TechnicianController::class, 'store'])
             ->name('store');
+            Route::get('/show/{id}', [TechnicianController::class, 'show'])
+            ->name('show');
 
         });
 

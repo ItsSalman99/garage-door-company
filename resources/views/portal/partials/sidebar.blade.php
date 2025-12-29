@@ -39,13 +39,15 @@
                                         alt=""></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link " href="{{ route('portal.technicians.index') }}">
-                                <div class="sb-nav-link-icon">
-                                    <img src="{{ asset('assets/images/icons/sidemenus/Customers.svg') }}"
-                                        alt="">
-                                </div>
-                                Technicians
-                            </a>
+                            @if(auth()->user()->hasRole('company'))
+                                <a class="nav-link " href="{{ route('portal.technicians.index') }}">
+                                    <div class="sb-nav-link-icon">
+                                        <img src="{{ asset('assets/images/icons/sidemenus/Customers.svg') }}"
+                                            alt="">
+                                    </div>
+                                    Technicians
+                                </a>
+                            @endif
                             <a class="nav-link " href="#.">
                                 <div class="sb-nav-link-icon">
                                     <img src="{{ asset('assets/images/icons/sidemenus/Marketplace.svg') }}"

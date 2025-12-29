@@ -78,7 +78,7 @@
                         aria-expanded="false" data-bs-auto-close="outside"> <img src="assets/images/user.png"
                             alt="">
                         <div class="d-none d-lg-block" data-bs-toggle="tooltip" data-bs-title="Login Info">
-                            <h6 class="text-capitalize m-0  font-15px font-weight-500">John Smith</h6>
+                            <h6 class="text-capitalize m-0  font-15px font-weight-500">{{ auth()->user()->full_name }}</h6>
                         </div>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end border-0 mt-2" aria-labelledby="navbarDropdown">
@@ -88,7 +88,7 @@
                                     <img src="assets/images/user.png" alt="student-img">
                                     <div class="d-flex align-items-baseline flex-1 justify-content-between">
                                         <div>
-                                            <h6 class="font-weight-700 font-18px m-0 text-primary"> John Smith</h6>
+                                            <h6 class="font-weight-700 font-18px m-0 text-primary"> {{ auth()->user()->full_name }}</h6>
                                             <p class=" font-14px m-0">Blue Limits</p>
                                         </div>
                                         <i class="bi bi-pencil font-15px text-primary"></i>
