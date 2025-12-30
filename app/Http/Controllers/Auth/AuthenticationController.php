@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class AuthenticationController extends Controller
@@ -35,6 +37,18 @@ class AuthenticationController extends Controller
                 'status' => false,
                 'message' => $validator->errors()->first(),
             ]);
+        }
+
+        if($request->login_as != 'Technician')
+        {
+            $checkUser = User::where('id', $request->id)->first();
+            // dd($checkUser);
+            if($checkUser->email != $request->email || !Hash::check($request->password, $checkUser->password)){
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Please login with correct '.$checkUser->full_name.' company details',
+                ]);
+            }
         }
 
         // Attempt login
@@ -79,7 +93,7 @@ class AuthenticationController extends Controller
         $request->session()->regenerateToken();
 
 
-        return redirect()->route('login');
+        return redirect()->route('index');
 
     }
 

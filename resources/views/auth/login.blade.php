@@ -10,6 +10,8 @@
                 </div>
                 <form id="loginForm" class="mt-6 px-0 px-md-12">
                     @csrf
+                    <input type="hidden" name="login_as" value="{{ request()->login_as }}">
+                    <input type="hidden" name="id" value="{{ request()->id }}">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
