@@ -9,9 +9,17 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthenticationController extends Controller
 {
-    public function login()
+    public function index()
     {
-        return view('auth.login');
+        return view('auth.index');
+    }
+
+    public function login(Request $request)
+    {
+
+        $login_as = $request->login;
+
+        return view('auth.login', get_defined_vars());
     }
 
     public function loginStore(Request $request)

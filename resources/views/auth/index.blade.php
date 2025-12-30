@@ -6,51 +6,35 @@
             <div>
                 {{-- <img src="assets/images/logo.svg" alt="" class="width-50 width-md-40 mx-auto mb-3"> --}}
                 <div class="text-center">
-                    <p class="m-0">Login your <b>{{ request()->login_as }}</b> Account!</p>
+                    <p class="m-0">Login your Account!</p>
                 </div>
-                <form id="loginForm" class="mt-6 px-0 px-md-12">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="">Email Address</label>
-                                <div class="position-relative">
-                                    <input type="email" name="email" class="form-control text-center"
-                                        placeholder="Enter your email address">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="">Password</label>
-                                <div class="position-relative">
-                                    <input type="password" name="password" class="form-control text-center" placeholder="Enter Password">
+                <div class="mt-6 px-0 px-md-12">
+                    <div class="row g-3">
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="text-center my-3">
-                                <ul>
-                                    {{-- <li><a href="forgetPassword.php"
-                                            class="primary-anchor text-decoration-underline font-14px">Forget Password?</a>
-                                    </li> --}}
-                                </ul>
-                            </div>
+                        <div class="col-6">
+                            <a href="{{ route('login', ['login_as' => 'Universal garage company']) }}"
+                                class="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-center text-center py-4 fw-semibold">
+                                Universal Garage Door
+                            </a>
                         </div>
 
-                        <div class="col-md-12">
-                            <ul class="text-center mt-1">
-                                <li>
-                                    <button type="submit" id="loginBtn"
-                                        class="btn btn-primary text-uppercase py-2 extra-btn-padding-50 rounded-pill">
-                                        Login
-                                    </button>
-                                </li>
-                            </ul>
+                        <div class="col-6">
+                            <a href="{{ route('login', ['login_as' => 'Buffalo garage company']) }}"
+                                class="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-center text-center py-4 fw-semibold">
+                                Buffalo Garage Door
+                            </a>
                         </div>
+
+                        <div class="col-12">
+                            <a href="{{ route('login', ['login_as' => 'Technician']) }}"
+                                class="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-center text-center py-4 fw-semibold">
+                                Technician
+                            </a>
+                        </div>
+
                     </div>
-                </form>
+                </div>
+
             </div>
 
         </div>

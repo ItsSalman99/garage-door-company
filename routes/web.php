@@ -9,7 +9,8 @@ use App\Http\Controllers\Company\TechnicianController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [AuthenticationController::class, 'login'])->name('login');
+Route::get('/', [AuthenticationController::class, 'index'])->name('index');
+Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
 Route::post('/login', [AuthenticationController::class, 'loginStore'])->name('login.store');
 Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
