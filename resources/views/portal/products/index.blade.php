@@ -60,7 +60,7 @@
 
                     <!-- Product -->
                     <div class="col-md-4 product-card" data-category="electronics">
-                        <div class="card border-0 shadow-sm">
+                        <div class="card border-0 shadow-sm product-item" data-product="Headphones">
                             <img src="https://picsum.photos/400/300?1" class="card-img-top">
                             <div class="card-body">
                                 <h5>Headphones</h5>
@@ -69,7 +69,7 @@
                     </div>
 
                     <div class="col-md-4 product-card" data-category="electronics">
-                        <div class="card border-0 shadow-sm">
+                        <div class="card border-0 shadow-sm product-item" data-product="Headphones">
                             <img src="https://picsum.photos/400/300?2" class="card-img-top">
                             <div class="card-body">
                                 <h5>Smart Watch</h5>
@@ -78,7 +78,7 @@
                     </div>
 
                     <div class="col-md-4 product-card" data-category="clothing">
-                        <div class="card border-0 shadow-sm">
+                        <div class="card border-0 shadow-sm product-item" data-product="Headphones">
                             <img src="https://picsum.photos/400/300?3" class="card-img-top">
                             <div class="card-body">
                                 <h5>Leather Jacket</h5>
@@ -87,7 +87,7 @@
                     </div>
 
                     <div class="col-md-4 product-card" data-category="accessories">
-                        <div class="card border-0 shadow-sm">
+                        <div class="card border-0 shadow-sm product-item" data-product="Headphones">
                             <img src="https://picsum.photos/400/300?4" class="card-img-top">
                             <div class="card-body">
                                 <h5>Sunglasses</h5>
@@ -96,7 +96,7 @@
                     </div>
 
                     <div class="col-md-4 product-card" data-category="home">
-                        <div class="card border-0 shadow-sm">
+                        <div class="card border-0 shadow-sm product-item" data-product="Headphones">
                             <img src="https://picsum.photos/400/300?5" class="card-img-top">
                             <div class="card-body">
                                 <h5>Plant Pot</h5>
@@ -310,6 +310,40 @@
         </div>
     </div>
 
+    <div class="modal fade" id="quotationModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content rounded-4">
+                <div class="modal-header">
+                    <h5 class="modal-title">Request a Quotation</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form>
+                        <input type="hidden" id="productName">
+
+                        <div class="mb-3">
+                            <label>Product</label>
+                            <input type="text" class="form-control" id="productTitle" readonly>
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Quantity</label>
+                            <input type="number" class="form-control" placeholder="Enter quantity">
+                        </div>
+
+                        <div class="mb-3">
+                            <label>Message</label>
+                            <textarea class="form-control" rows="4" placeholder="Your requirements..."></textarea>
+                        </div>
+
+                        <button class="btn btn-primary w-100">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     @push('extra-js')
         <script>
@@ -333,6 +367,19 @@
                         }
                     });
 
+                });
+            });
+
+            const productItems = document.querySelectorAll('.product-item');
+
+            productItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const product = item.getAttribute('data-product');
+
+                    document.getElementById('productTitle').value = product;
+
+                    const modal = new bootstrap.Modal(document.getElementById('quotationModal'));
+                    modal.show();
                 });
             });
         </script>

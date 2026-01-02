@@ -50,31 +50,18 @@
                                 </a>
                             @endif
 
-                            <a class="nav-link collapsed sidenav-active" href="#" data-bs-toggle="collapse"
-                                data-bs-target="#Products" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><img
-                                        src="{{ asset('assets/images/icons/sidemenus/Marketplace.svg') }}"
-                                        alt=""></div>
-                                Product Catalog
-                                <div class="sb-sidenav-collapse-arrow"><i class="bi bi-chevron-down"></i></div>
+                            <a class="nav-link " href="{{ route('portal.products.index') }}">
+                                <div class="sb-nav-link-icon">
+                                    <img src="{{ asset('assets/images/icons/sidemenus/Marketplace.svg') }}"
+                                        alt="">
+                                </div>
+                                Products
                             </a>
-                            <div class="collapse" id="Products" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested">
-                                    <a class="nav-link" href="{{ route('portal.products.categories.index') }}">
-                                        Product Categories
-                                    </a>
-                                </nav>
-                                <nav class="sb-sidenav-menu-nested">
-                                    <a class="nav-link " href="{{ route('portal.products.index') }}">
-                                        Products
-                                    </a>
-                                </nav>
-                            </div>
                             <a class="nav-link collapsed sidenav-active" href="#" data-bs-toggle="collapse"
                                 data-bs-target="#Services" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><img
-                                        src="{{ asset('assets/images/icons/sidemenus/Inventory.svg') }}"
-                                        alt=""></div>
+                                        src="{{ asset('assets/images/icons/sidemenus/Inventory.svg') }}" alt="">
+                                </div>
                                 Service Catalog
                                 <div class="sb-sidenav-collapse-arrow"><i class="bi bi-chevron-down"></i></div>
                             </a>
