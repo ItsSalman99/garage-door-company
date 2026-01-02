@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DASHBOARD</title>
     @include('partials.header')
-
+    @stack('extra-css')
 </head>
 <body>
 

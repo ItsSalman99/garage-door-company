@@ -1,5 +1,35 @@
 @extends('portal.layout.main')
 
+@push('extra-css')
+    <style>
+        .category-btn {
+            padding: 10px 25px;
+            border-radius: 30px;
+            border: none;
+            background: #f4f4f4;
+            font-weight: 500;
+            transition: .3s;
+            cursor: pointer;
+        }
+
+        .category-btn.active {
+            background: dodgerblue;
+            color: white;
+        }
+
+        .category-btn:hover {
+            background: dodgerblue;
+            color: white;
+        }
+
+        .card img {
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+    </style>
+@endpush
+
 @section('content')
     <div class="cover-all-content">
         <div class="page-title d-flex align-items-center justify-content-between gap-3 flex-wrap">
@@ -14,27 +44,69 @@
                             class="bi bi-person-plus-fill"></i> Add Product</a> --}}
                 </div>
             </div>
-            <div class="cover-datatable">
-                <table class="display align-middle" id="datatableCheckbox" cellspacing="0" width="100%"
-                    data-ordering="false" data-searching="false">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>#ID</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Type</th>
-                            <th>Note</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <div class="container py-5">
 
-                    </tbody>
-                </table>
+                <!-- Category Tabs -->
+                <div class="d-flex gap-3 mb-4">
+                    <button class="category-btn active" data-category="all">All</button>
+                    <button class="category-btn" data-category="electronics">Electronics</button>
+                    <button class="category-btn" data-category="clothing">Clothing</button>
+                    <button class="category-btn" data-category="accessories">Accessories</button>
+                    <button class="category-btn" data-category="home">Home & Garden</button>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="row g-4" id="productContainer">
+
+                    <!-- Product -->
+                    <div class="col-md-4 product-card" data-category="electronics">
+                        <div class="card border-0 shadow-sm">
+                            <img src="https://picsum.photos/400/300?1" class="card-img-top">
+                            <div class="card-body">
+                                <h5>Headphones</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 product-card" data-category="electronics">
+                        <div class="card border-0 shadow-sm">
+                            <img src="https://picsum.photos/400/300?2" class="card-img-top">
+                            <div class="card-body">
+                                <h5>Smart Watch</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 product-card" data-category="clothing">
+                        <div class="card border-0 shadow-sm">
+                            <img src="https://picsum.photos/400/300?3" class="card-img-top">
+                            <div class="card-body">
+                                <h5>Leather Jacket</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 product-card" data-category="accessories">
+                        <div class="card border-0 shadow-sm">
+                            <img src="https://picsum.photos/400/300?4" class="card-img-top">
+                            <div class="card-body">
+                                <h5>Sunglasses</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 product-card" data-category="home">
+                        <div class="card border-0 shadow-sm">
+                            <img src="https://picsum.photos/400/300?5" class="card-img-top">
+                            <div class="card-body">
+                                <h5>Plant Pot</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+
         </div>
     </div>
 
@@ -86,7 +158,8 @@
                             <div class="d-flex align-items-center justify-content-center gap-3 mt-4 pt-2 flex-wrap">
                                 <button type="button" class="btn btn-outline-primary extra-btn-padding-30"
                                     data-bs-dismiss="modal">Cancel</button>
-                                <button type="submit" id="saveBtn" class="btn btn-primary extra-btn-padding-30">Save</button>
+                                <button type="submit" id="saveBtn"
+                                    class="btn btn-primary extra-btn-padding-30">Save</button>
                             </div>
                         </div>
                     </form>
@@ -240,54 +313,26 @@
 
     @push('extra-js')
         <script>
-            $('#addForm').on('submit', function(e) {
-                e.preventDefault();
+            const buttons = document.querySelectorAll('.category-btn');
+            const products = document.querySelectorAll('.product-card');
 
-                $('#saveBtn').prop('disabled', true).text('Saving...');
-                var formData = new FormData(this)
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
 
-                $.ajax({
-                    url: '{{ route('portal.technicians.store') }}',
-                    method: "POST",
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: function(response) {
-                        if (response.status === true) {
-                            $('.success').html('Created successful! Redirecting...');
-                            Toast.fire({
-                                icon: "success",
-                                title: response.message,
-                                timer: 2000,
-                                timerProgressBar: true,
-                                didClose: () => {
-                                    window.location.href = response.redirect;
-                                }
-                            });
+                    // Remove active class
+                    buttons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const category = btn.getAttribute('data-category');
+
+                    products.forEach(product => {
+                        if (category === "all" || product.getAttribute('data-category') === category) {
+                            product.style.display = "block";
                         } else {
-                            Toast.fire({
-                                icon: "error",
-                                title: response.message,
-                                timer: 2000,
-                                timerProgressBar: true
-                            });
+                            product.style.display = "none";
                         }
-                    },
-                    error: function(xhr) {
-                        if (xhr.status === 422) {
-                            let errors = xhr.responseJSON.errors;
-                            let msg = '';
-                            $.each(errors, function(key, value) {
-                                msg += value[0] + "<br>";
-                            });
-                            $('.error').html(msg);
-                        } else {
-                            $('.error').html("Invalid!");
-                        }
-                    },
-                    complete: function() {
-                        $('#saveBtn').prop('disabled', false).text('Save');
-                    }
+                    });
+
                 });
             });
         </script>
