@@ -43,7 +43,8 @@ class AuthenticationController extends Controller
         {
             $checkUser = User::where('id', $request->id)->first();
             // dd($checkUser);
-            if($checkUser->email != $request->email || !Hash::check($request->password, $checkUser->password)){
+
+            if(!$checkUser || $checkUser->email != $request->email || !Hash::check($request->password, $checkUser->password)){
                 return response()->json([
                     'status' => false,
                     'message' => 'Please login with correct '.$checkUser->full_name.' company details',

@@ -72,7 +72,7 @@
                                     <div class="d-flex align-items-baseline flex-1 justify-content-between">
                                         <div>
                                             <h6 class="font-weight-700 font-18px m-0 text-primary"> {{ auth()->user()->full_name }}</h6>
-                                            <p class=" font-14px m-0">Blue Limits</p>
+                                            <p class=" font-14px m-0"></p>
                                         </div>
                                         <i class="bi bi-pencil font-15px text-primary"></i>
                                     </div>

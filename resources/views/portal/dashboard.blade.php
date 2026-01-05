@@ -19,7 +19,8 @@
                                         {{ auth()->user()->full_name }}
                                     </span>
                                 </h3>
-                                <h5 class="text-dark font-16px font-md-20px font-weight-400 m-0">Welcome to {{ $roleName = auth()->user()->getRoleNames()->first(); }} portal!
+                                <h5 class="text-dark font-16px font-md-20px font-weight-400 m-0">Welcome to
+                                    {{ $roleName = auth()->user()->getRoleNames()->first() }} portal!
                                 </h5>
                             </div>
                         </div>
@@ -35,52 +36,127 @@
         </div>
 
         <div class="row gx-3">
-            <div class="col-md-6 col-lg-4">
-                <div class="card primary-border-hover">
-                    <div class="card-body">
-                        <div class="salesCard d-flex align-items-center gap-3">
-                            <div class="icon flex-shrink-0">
-                                <img src="{{ asset('assets/images/icons/Total Customers.svg') }}" alt="">
-                            </div>
-                            <div>
-                                <h3 class="font-weight-600 font-25px font-md-32px mb-1">0</h3>
-                                <h6 class=" font-weight-400 font-14px m-0">Total Technicians</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card primary-border-hover">
-                    <div class="card-body">
-                        <div class="salesCard d-flex align-items-center gap-3">
-                            <div class="icon flex-shrink-0">
-                                <img src="assets/images/icons/Total Revenue.svg" alt="">
-                            </div>
-                            <div>
-                                <h3 class="font-weight-600 font-25px font-md-32px mb-1">0</h3>
-                                <h6 class=" font-weight-400 font-14px m-0">Total Product</h6>
+            @if (auth()->user()->hasRole('company'))
+                <div class="col-md-6 col-lg-4">
+                    <div class="card primary-border-hover">
+                        <div class="card-body">
+                            <div class="salesCard d-flex align-items-center gap-3">
+                                <div class="icon flex-shrink-0">
+                                    <img src="{{ asset('assets/images/icons/Total Customers.svg') }}" alt="">
+                                </div>
+                                <div>
+                                    <h3 class="font-weight-600 font-25px font-md-32px mb-1">0</h3>
+                                    <h6 class=" font-weight-400 font-14px m-0">Total Technicians</h6>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card primary-border-hover">
-                    <div class="card-body">
-                        <div class="salesCard d-flex align-items-center gap-3">
-                            <div class="icon flex-shrink-0">
-                                <img src="assets/images/icons/Total Orders.svg" alt="">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card primary-border-hover">
+                        <div class="card-body">
+                            <div class="salesCard d-flex align-items-center gap-3">
+                                <div class="icon flex-shrink-0">
+                                    <img src="assets/images/icons/Total Revenue.svg" alt="">
+                                </div>
+                                <div>
+                                    <h3 class="font-weight-600 font-25px font-md-32px mb-1">0</h3>
+                                    <h6 class=" font-weight-400 font-14px m-0">Total Product</h6>
+                                </div>
                             </div>
-                            <div>
-                                <h3 class="font-weight-600 font-25px font-md-32px mb-1">0</h3>
-                                <h6 class=" font-weight-400 font-14px m-0">Total Qoutations</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card primary-border-hover">
+                        <div class="card-body">
+                            <div class="salesCard d-flex align-items-center gap-3">
+                                <div class="icon flex-shrink-0">
+                                    <img src="assets/images/icons/Total Orders.svg" alt="">
+                                </div>
+                                <div>
+                                    <h3 class="font-weight-600 font-25px font-md-32px mb-1">0</h3>
+                                    <h6 class=" font-weight-400 font-14px m-0">Total Qoutations</h6>
 
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @else
+                <div class="col-md-6 col-lg-4">
+                    <div class="card primary-border-hover">
+                        <div class="card-body">
+                            <div class="salesCard d-flex align-items-center gap-3">
+                                <div class="icon flex-shrink-0">
+                                    <img src="assets/images/icons/Total Revenue.svg" alt="">
+                                </div>
+                                <div>
+                                    <h3 class="font-weight-600 font-25px font-md-32px mb-1">0</h3>
+                                    <h6 class=" font-weight-400 font-14px m-0">Total Product</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card primary-border-hover">
+                        <div class="card-body">
+                            <div class="salesCard d-flex align-items-center gap-3">
+                                <div class="icon flex-shrink-0">
+                                    <img src="assets/images/icons/Total Orders.svg" alt="">
+                                </div>
+                                <div>
+                                    <h3 class="font-weight-600 font-25px font-md-32px mb-1">0</h3>
+                                    <h6 class=" font-weight-400 font-14px m-0">Total Qoutations</h6>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+            @if (auth()->user()->hasRole('company'))
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                                <div class="d-flex align-items-center gap-2">
+                                    <h5 class="card-title mb-0">Total Orders</h5>
+                                    <div class="d-none d-lg-block">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <div class="d-flex align-items-center gap-2 border border-radius-4px px-2 py-1">
+                                                <span style="width: 12px; height: 12px;"
+                                                    class="borde-radius-2px bg-primary"></span>
+                                                <p class="font-12px font-weight-400 m-0">This Year</p>
+                                            </div>
+                                            <div class="d-flex align-items-center gap-2 border border-radius-4px px-2 py-1">
+                                                <span style="width: 12px; height: 12px; background: #FFA359"
+                                                    class="borde-radius-2px"></span>
+                                                <p class="font-12px font-weight-400 m-0">Last Year</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="revenuChart"></div>
+                            <div class=" d-lg-none">
+                                <div class="d-flex align-items-center justify-content-center gap-2">
+                                    <div class="d-flex align-items-center gap-2 border border-radius-4px px-2 py-1">
+                                        <span style="width: 12px; height: 12px;" class="borde-radius-2px bg-primary"></span>
+                                        <p class="font-12px font-weight-400 m-0">This Year</p>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 border border-radius-4px px-2 py-1">
+                                        <span style="width: 12px; height: 12px; background: #FFA359"
+                                            class="borde-radius-2px"></span>
+                                        <p class="font-12px font-weight-400 m-0">Last Year</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 @endsection
