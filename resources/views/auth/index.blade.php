@@ -12,14 +12,14 @@
                     <div class="row g-3">
 
                         <div class="col-6">
-                            <a href="{{ route('login', ['login_as' => 'Universal garage company', 'id' => 1]) }}"
+                            <a href="{{ route('login', ['login_as' => 'Universal garage company', 'id' => 2]) }}"
                                 class="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-center text-center py-4 fw-semibold">
                                 Universal Garage Door
                             </a>
                         </div>
 
                         <div class="col-6">
-                            <a href="{{ route('login', ['login_as' => 'Buffalo garage company', 'id' => 2]) }}"
+                            <a href="{{ route('login', ['login_as' => 'Buffalo garage company', 'id' => 3]) }}"
                                 class="btn btn-primary w-100 h-100 d-flex align-items-center justify-content-center text-center py-4 fw-semibold">
                                 Buffalo Garage Door
                             </a>

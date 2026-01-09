@@ -63,8 +63,8 @@
                     @foreach ($categories as $cat)
                         @foreach ($cat->products as $product)
                             <div class="col-md-4 product-card" data-category="{{ Str::slug($cat->name) }}">
-                                <div class="card border-0 shadow-sm product-item" data-product="{{ $product->name }}"
-                                    data-image="{{ asset($product->image) }}">
+                                <div class="card border-0 shadow-sm product-item" data-product-id="{{ $product->id }}"
+                                    data-product="{{ $product->name }}" data-image="{{ asset($product->image) }}">
 
                                     <img src="{{ asset($product->image) }}" class="card-img-top">
 
@@ -92,8 +92,9 @@
                     </div>
 
                     <div class="modal-body">
-                        <form>
-                            <input type="hidden" id="productName">
+                        <form id="quotationForm">
+                            @csrf
+                            <input type="hidden" name="product_id" id="productId" value="">
 
                             <div class="mb-3">
                                 <label>Product</label>
@@ -109,18 +110,53 @@
                                     @endforeach
                                 </select>
                             </div>
-
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label>Price</label>
+                                        <input type="number" min="1" class="form-control" name="price"
+                                            placeholder="Enter price">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label>Quantity</label>
+                                        <input type="number" min="1" class="form-control" name="quantity"
+                                            placeholder="Enter quantity">
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label>Customer Name</label>
+                                        <input type="text" class="form-control" name="customer_name"
+                                            placeholder="Enter customer name">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label>Customer Email</label>
+                                        <input type="email" class="form-control" name="customer_email" placeholder="Enter email">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="mb-3">
-                                <label>Quantity</label>
-                                <input type="number" min="1" class="form-control" placeholder="Enter quantity">
+                                <label>Customer Phone</label>
+                                <input type="tel" class="form-control" name="customer_phone"
+                                    placeholder="Enter customer phone">
+                            </div>
+                            <div class="mb-3">
+                                <label>Customer Address</label>
+                                <textarea class="form-control" name="customer_address" rows="4" placeholder="Customer address..."></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label>Note</label>
+                                <textarea class="form-control" name="note" rows="4" placeholder="Your requirements..."></textarea>
                             </div>
 
-                            <div class="mb-3">
-                                <label>Message</label>
-                                <textarea class="form-control" rows="4" placeholder="Your requirements..."></textarea>
-                            </div>
-
-                            <button class="btn btn-primary w-100">Submit Request</button>
+                            <button class="btn btn-primary w-100" type="submit" id="saveBtn">Submit Request</button>
                         </form>
                     </div>
                 </div>
@@ -160,11 +196,64 @@
             productItems.forEach(item => {
                 item.addEventListener('click', () => {
                     const product = item.getAttribute('data-product');
+                    const productId = item.getAttribute('data-product-id');
 
                     document.getElementById('productTitle').value = product;
+                    document.getElementById('productId').value = productId;
 
                     const modal = new bootstrap.Modal(document.getElementById('quotationModal'));
                     modal.show();
+                });
+            });
+
+            $('#quotationForm').on('submit', function(e) {
+                e.preventDefault();
+
+                $('#saveBtn').prop('disabled', true).text('Saving in...');
+                var formData = new FormData(this)
+
+                $.ajax({
+                    url: '{{ route('portal.quotation.store') }}',
+                    method: "POST",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        if (response.status === true) {
+                            $('.success').html('Save successful! Redirecting...');
+                            Toast.fire({
+                                icon: "success",
+                                title: response.message,
+                                timer: 2000,
+                                timerProgressBar: true,
+                                didClose: () => {
+                                    window.location.reload();
+                                }
+                            });
+                        } else {
+                            Toast.fire({
+                                icon: "error",
+                                title: response.message,
+                                timer: 2000,
+                                timerProgressBar: true
+                            });
+                        }
+                    },
+                    error: function(xhr) {
+                        if (xhr.status === 422) {
+                            let errors = xhr.responseJSON.errors;
+                            let msg = '';
+                            $.each(errors, function(key, value) {
+                                msg += value[0] + "<br>";
+                            });
+                            $('.error').html(msg);
+                        } else {
+                            $('.error').html("Invalid!");
+                        }
+                    },
+                    complete: function() {
+                        $('#saveBtn').prop('disabled', false).text('Save');
+                    }
                 });
             });
         </script>

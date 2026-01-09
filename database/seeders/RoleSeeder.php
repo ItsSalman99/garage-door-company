@@ -13,7 +13,11 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1️⃣ Create company role if not exists
+        // 1️⃣ Create role if not exists
+        $companyRole = Role::firstOrCreate([
+            'name' => 'admin',
+            'guard_name' => 'web'
+        ]);
         $companyRole = Role::firstOrCreate([
             'name' => 'company',
             'guard_name' => 'web'

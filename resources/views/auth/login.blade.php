@@ -3,14 +3,17 @@
 @section('content')
     <div class="signup bg-white rounded-4 overflow-hidden" style="box-shadow: 0px 0px 8px 0px #00000040;">
         <div class="right-box d-flex align-items-center order-1 order-lg-0 ">
+            @php
+                $loginas = (request()->login_as) ? request()->login_as : $login_as
+            @endphp
             <div>
                 {{-- <img src="assets/images/logo.svg" alt="" class="width-50 width-md-40 mx-auto mb-3"> --}}
                 <div class="text-center">
-                    <p class="m-0">Login your <b>{{ request()->login_as }}</b> Account!</p>
+                    <p class="m-0">Login your <b>{{ $loginas }}</b> Account!</p>
                 </div>
                 <form id="loginForm" class="mt-6 px-0 px-md-12">
                     @csrf
-                    <input type="hidden" name="login_as" value="{{ request()->login_as }}">
+                    <input type="hidden" name="login_as" value="{{ $loginas }}">
                     <input type="hidden" name="id" value="{{ request()->id }}">
                     <div class="row">
                         <div class="col-md-12">
@@ -57,7 +60,7 @@
 
         </div>
         <div class="left-box login-show-left d-flex align-items-center justify-content-center"
-            style="background: url(assets/images/login/right.jpg) no-repeat center/cover;"></div>
+            style="background: url({{ asset('assets/images/login/right.jpg') }}) no-repeat center/cover;"></div>
 
     </div>
 

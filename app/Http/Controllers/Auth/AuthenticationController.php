@@ -24,6 +24,14 @@ class AuthenticationController extends Controller
         return view('auth.login', get_defined_vars());
     }
 
+    public function adminLogin(Request $request)
+    {
+
+        $login_as = 'admin';
+
+        return view('auth.login', get_defined_vars());
+    }
+
     public function loginStore(Request $request)
     {
 

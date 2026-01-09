@@ -78,6 +78,14 @@
                                 </nav>
                             </div>
 
+
+                            <a class="nav-link " href="{{ route('portal.quotation.index') }}">
+                                <div class="sb-nav-link-icon">
+                                    <img src="{{ asset('assets/images/icons/sidemenus/Order.svg') }}"
+                                        alt="">
+                                </div>
+                                Quotation Orders
+                            </a>
                         </div>
                     </div>
                 </div>

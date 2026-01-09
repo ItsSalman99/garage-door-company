@@ -7,12 +7,16 @@ use App\Http\Controllers\Company\ServiceCategoryController;
 use App\Http\Controllers\Company\ServiceController;
 use App\Http\Controllers\Company\TechnicianController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Technician\QuotationOrderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [AuthenticationController::class, 'index'])->name('index');
 Route::get('/login', [AuthenticationController::class, 'login'])->name('login');
 Route::post('/login', [AuthenticationController::class, 'loginStore'])->name('login.store');
 Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout');
+
+
+Route::get('/admin/login', [AuthenticationController::class, 'adminLogin'])->name('login');
 
 Route::prefix('portal')
     ->middleware('auth-check')
@@ -65,6 +69,18 @@ Route::prefix('portal')
 
                 Route::get('/', [ServiceController::class, 'index'])
                     ->name('index');
+
+            });
+
+        Route::prefix('quotation')->name('quotation.')
+            ->group(function () {
+
+                Route::get('/', [QuotationOrderController::class, 'index'])
+                    ->name('index');
+                Route::get('/show/{id}', [QuotationOrderController::class, 'show'])
+                    ->name('show');
+                Route::post('/store', [QuotationOrderController::class, 'store'])
+                    ->name('store');
 
             });
     });
