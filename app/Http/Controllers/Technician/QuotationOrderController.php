@@ -31,7 +31,7 @@ class QuotationOrderController extends Controller
 
     }
 
-    public function store(Request $request)
+    public function storeProduct(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'company_id' => 'required|exists:users,id',
@@ -58,6 +58,58 @@ class QuotationOrderController extends Controller
                 'technician_id' => auth()->user()->id,
                 'company_id' => $request->company_id,
                 'product_id' => $request->product_id,
+                'price' => $request->price,
+                'quantity' => $request->quantity,
+                'total' => $request->quantity * $request->price,
+                'customer_name' => $request->customer_name,
+                'customer_email' => $request->customer_email,
+                'customer_phone' => $request->customer_phone,
+                'customer_address' => $request->customer_address,
+                'note' => $request->note,
+            ]);
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Quotation created successfully',
+                'data' => $quotation,
+            ]);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => false,
+                'message' => $th->getMessage(),
+            ]);
+        }
+
+    }
+
+    public function storeService(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'company_id' => 'required|exists:users,id',
+            'service_id' => 'required|exists:services,id',
+            'price' => 'required|numeric|min:0',
+            'quantity' => 'required|integer|min:1',
+            'customer_name' => 'required|string|max:255',
+            'customer_email' => 'nullable|email',
+            'customer_phone' => 'required|string|max:20',
+            'customer_address' => 'required|string',
+            'note' => 'nullable|string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => $validator->errors()->first(),
+            ]);
+        }
+
+        try {
+
+            $quotation = QuotationOrder::create([
+                'technician_id' => auth()->user()->id,
+                'company_id' => $request->company_id,
+                'service_id' => $request->service_id,
                 'price' => $request->price,
                 'quantity' => $request->quantity,
                 'total' => $request->quantity * $request->price,

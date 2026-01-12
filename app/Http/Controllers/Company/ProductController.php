@@ -14,7 +14,7 @@ class ProductController extends Controller
 
         $companies = User::role('company')->get();
         // dd($companies);
-        $categories = Category::where('type', 'product')->with('products')->get();
+        $categories = Category::with('products')->get();
 
         return view('portal.products.index', get_defined_vars());
 
