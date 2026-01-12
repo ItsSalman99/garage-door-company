@@ -70,7 +70,10 @@
 
     <div class="header">
         <div class="company">{{ $quotation->company->full_name }}</div>
-        <div>{{ $quotation->product->name }}</div>
+        <div>
+            {{ $quotation->product?->name ?? ($quotation->service?->name ?? 'Not Found') }}
+        </div>
+
     </div>
 
     <table class="invoice-info">
@@ -98,7 +101,7 @@
         <tbody>
             <tr>
                 <td>{{ $quotation->id }}</td>
-                <td>{{ $quotation->product->name }}</td>
+                <td>{{ $quotation->product?->name ?? ($quotation->service?->name ?? 'Not Found') }}</td>
                 <td>{{ $quotation->company->full_name }}</td>
                 <td>{{ $quotation->quantity }}</td>
                 <td>{{ $quotation->price }}</td>

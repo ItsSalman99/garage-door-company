@@ -138,7 +138,8 @@
                                 <div class="col-6">
                                     <div class="mb-3">
                                         <label>Customer Email</label>
-                                        <input type="email" class="form-control" name="customer_email" placeholder="Enter email">
+                                        <input type="email" class="form-control" name="customer_email"
+                                            placeholder="Enter email">
                                     </div>
                                 </div>
                             </div>
@@ -165,97 +166,97 @@
     @endif
 
 
+@endsection
 
-    @push('extra-js')
-        <script>
-            const buttons = document.querySelectorAll('.category-btn');
-            const products = document.querySelectorAll('.product-card');
+@push('extra-js')
+    <script>
+        const buttons = document.querySelectorAll('.category-btn');
+        const products = document.querySelectorAll('.product-card');
 
-            buttons.forEach(btn => {
-                btn.addEventListener('click', () => {
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
 
-                    // Remove active class
-                    buttons.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
+                // Remove active class
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
 
-                    const category = btn.getAttribute('data-category');
+                const category = btn.getAttribute('data-category');
 
-                    products.forEach(product => {
-                        if (category === "all" || product.getAttribute('data-category') === category) {
-                            product.style.display = "block";
-                        } else {
-                            product.style.display = "none";
-                        }
-                    });
-
-                });
-            });
-
-            const productItems = document.querySelectorAll('.product-item');
-
-            productItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const product = item.getAttribute('data-product');
-                    const productId = item.getAttribute('data-product-id');
-
-                    document.getElementById('productTitle').value = product;
-                    document.getElementById('productId').value = productId;
-
-                    const modal = new bootstrap.Modal(document.getElementById('quotationModal'));
-                    modal.show();
-                });
-            });
-
-            $('#quotationForm').on('submit', function(e) {
-                e.preventDefault();
-
-                $('#saveBtn').prop('disabled', true).text('Saving in...');
-                var formData = new FormData(this)
-
-                $.ajax({
-                    url: '{{ route('portal.quotation.store') }}',
-                    method: "POST",
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: function(response) {
-                        if (response.status === true) {
-                            $('.success').html('Save successful! Redirecting...');
-                            Toast.fire({
-                                icon: "success",
-                                title: response.message,
-                                timer: 2000,
-                                timerProgressBar: true,
-                                didClose: () => {
-                                    window.location.reload();
-                                }
-                            });
-                        } else {
-                            Toast.fire({
-                                icon: "error",
-                                title: response.message,
-                                timer: 2000,
-                                timerProgressBar: true
-                            });
-                        }
-                    },
-                    error: function(xhr) {
-                        if (xhr.status === 422) {
-                            let errors = xhr.responseJSON.errors;
-                            let msg = '';
-                            $.each(errors, function(key, value) {
-                                msg += value[0] + "<br>";
-                            });
-                            $('.error').html(msg);
-                        } else {
-                            $('.error').html("Invalid!");
-                        }
-                    },
-                    complete: function() {
-                        $('#saveBtn').prop('disabled', false).text('Save');
+                products.forEach(product => {
+                    if (category === "all" || product.getAttribute('data-category') === category) {
+                        product.style.display = "block";
+                    } else {
+                        product.style.display = "none";
                     }
                 });
+
             });
-        </script>
-    @endpush
-@endsection
+        });
+
+        const productItems = document.querySelectorAll('.product-item');
+
+        productItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const product = item.getAttribute('data-product');
+                const productId = item.getAttribute('data-product-id');
+
+                document.getElementById('productTitle').value = product;
+                document.getElementById('productId').value = productId;
+
+                const modal = new bootstrap.Modal(document.getElementById('quotationModal'));
+                modal.show();
+            });
+        });
+
+        $('#quotationForm').on('submit', function(e) {
+            e.preventDefault();
+
+            $('#saveBtn').prop('disabled', true).text('Saving in...');
+            var formData = new FormData(this)
+
+            $.ajax({
+                url: '{{ route('portal.quotation.storeProduct') }}',
+                method: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    if (response.status === true) {
+                        $('.success').html('Save successful! Redirecting...');
+                        Toast.fire({
+                            icon: "success",
+                            title: response.message,
+                            timer: 2000,
+                            timerProgressBar: true,
+                            didClose: () => {
+                                window.location.reload();
+                            }
+                        });
+                    } else {
+                        Toast.fire({
+                            icon: "error",
+                            title: response.message,
+                            timer: 2000,
+                            timerProgressBar: true
+                        });
+                    }
+                },
+                error: function(xhr) {
+                    if (xhr.status === 422) {
+                        let errors = xhr.responseJSON.errors;
+                        let msg = '';
+                        $.each(errors, function(key, value) {
+                            msg += value[0] + "<br>";
+                        });
+                        $('.error').html(msg);
+                    } else {
+                        $('.error').html("Invalid!");
+                    }
+                },
+                complete: function() {
+                    $('#saveBtn').prop('disabled', false).text('Save');
+                }
+            });
+        });
+    </script>
+@endpush

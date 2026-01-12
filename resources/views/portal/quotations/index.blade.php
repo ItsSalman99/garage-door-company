@@ -22,6 +22,7 @@
                             <th></th>
                             <th>#ID</th>
                             <th>Product</th>
+                            <th>Service</th>
                             <th>Company</th>
                             <th>Technician</th>
                             <th>Price</th>
@@ -40,7 +41,8 @@
                             <tr>
                                 <td></td>
                                 <td>{{ $key + 1 }}</td>
-                                <td>{{ $item->product->name }}</td>
+                                <td>{{ isset($item->product) ? $item->product->name : 'N/A' }}</td>
+                                <td>{{ isset($item->service) ? $item->service->name : 'N/A' }}</td>
                                 <td>{{ $item->company->full_name }}</td>
                                 <td>{{ $item->technician->full_name }}</td>
                                 <td>{{ $item->price }}</td>

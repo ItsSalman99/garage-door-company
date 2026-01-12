@@ -3,7 +3,7 @@
 @section('content')
     <div class="cover-all-content">
         <div class="page-title d-flex align-items-center justify-content-between gap-3 flex-wrap">
-            <h2>Quotation Of <small class=" opacity-06 font-weight-400 font-24px">({{ $quotation->product->name }})</small></h2>
+            <h2>Quotation Of <small class=" opacity-06 font-weight-400 font-24px">({{ $quotation->product?->name ?? ($quotation->service?->name ?? 'Not Found') }})</small></h2>
             <div class="d-flex flex-wrap gap-2">
                 <ul class="d-flex flex-wrap gap-3">
                     <li><a href="#" class="btn white-btn gap-2 border-radius-10px border font-weight-400"
@@ -51,19 +51,19 @@
                                 <div class=" col-lg-4">
                                     <div class="pb-3 border-bottom">
                                         <h6 class=" font-weight-400 font-16px mb-2">Product Category: </h6>
-                                        <h5 class=" font-weight-600 font-18px m-0"> {{ $quotation->product->category->name  }}</h5>
+                                        <h5 class=" font-weight-600 font-18px m-0"> {{ $quotation->product->category?->name ?? ($quotation->service->category?->name ?? 'Not Found')  }}</h5>
                                     </div>
                                 </div>
                                 <div class=" col-lg-4">
                                     <div class="pb-3 border-bottom">
                                         <h6 class=" font-weight-400 font-16px mb-2">Product Name: </h6>
-                                        <h5 class=" font-weight-600 font-18px m-0"> {{ $quotation->product->name }}</h5>
+                                        <h5 class=" font-weight-600 font-18px m-0"> {{ $quotation->product?->name ?? ($quotation->service?->name ?? 'Not Found') }}</h5>
                                     </div>
                                 </div>
                                 <div class=" col-lg-4">
                                     <div class="pb-3 border-bottom">
                                         <h6 class=" font-weight-400 font-16px mb-2">Product Brand: </h6>
-                                        <h5 class=" font-weight-600 font-18px m-0"> {{ $quotation->product->brand }} </h5>
+                                        <h5 class=" font-weight-600 font-18px m-0"> {{ isset($quotation->product->brand) ? $quotation->product->brand : 'N/A' }} </h5>
                                     </div>
                                 </div>
                                 <div class=" col-lg-4">

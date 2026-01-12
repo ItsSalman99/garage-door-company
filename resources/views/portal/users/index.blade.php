@@ -3,7 +3,7 @@
 @section('content')
     <div class="cover-all-content">
         <div class="page-title d-flex align-items-center justify-content-between gap-3 flex-wrap">
-            <h2>Categories</h2>
+            <h2>Technicians</h2>
         </div>
         <br>
         <br>
@@ -11,7 +11,7 @@
             <div class="DTable-top-elements justify-content-center justify-content-lg-end">
                 <div class="d-flex  flex-wrap flex-lg-nowrap gap-2">
                     {{-- <a href="#" data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-primary gap-2"><i
-                            class="bi bi-person-plus-fill"></i> Add Product</a> --}}
+                            class="bi bi-person-plus-fill"></i> Add Usesr</a> --}}
                 </div>
             </div>
             <div class="cover-datatable">
@@ -21,23 +21,47 @@
                         <tr>
                             <th></th>
                             <th>#ID</th>
-                            <th>Name</th>
-                            <th>Description</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($categories as $item)
+                        @foreach ($users as $user)
                             <tr>
                                 <td></td>
-                                <td>{{ $item->id }}</td>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->description }}</td>
-                                <td>{{ $item->status }}</td>
-                                <td></td>
+                                <td class="font-weight-500">#{{ $user->id }}</td>
+                                <td style="max-width: 160px;">
+                                    <div class=" text-truncate">
+                                        {{ $user->full_name }}
+                                    </div>
+                                </td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->phone }}</td>
+                                <td class="text-center">{{ $user->gender }}</td>
+                                <td class=" font-weight-600 font-18px text-primary">
+                                    {{ $user->status ? 'Active' : 'In Active' }}</td>
+                                <td class="text-center">
+                                    <ul class="dropdownStyle-v1">
+                                        <li class="tableDropdown dropdown">
+                                            <a href="javascript:void(0)" class="dropdown-toggle caret-none"
+                                                data-bs-toggle="dropdown" role="button" id="navbarDropdown"
+                                                aria-expanded="false" aria-haspopup="true"><i
+                                                    class="bi bi-three-dots-vertical font-19px link-dark"></i></a>
+                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                                <li>
+                                                    <a href="{{ route('portal.users.show', ['id' => $user->id]) }}" class="dropdown-item">View Details</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
                             </tr>
                         @endforeach
+
+
                     </tbody>
                 </table>
             </div>

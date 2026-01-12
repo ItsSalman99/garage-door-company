@@ -104,6 +104,21 @@
                         <div class="card-body">
                             <div class="salesCard d-flex align-items-center gap-3">
                                 <div class="icon flex-shrink-0">
+                                    <img src="assets/images/icons/branch.svg" alt="">
+                                </div>
+                                <div>
+                                    <h3 class="font-weight-600 font-25px font-md-32px mb-1">0</h3>
+                                    <h6 class=" font-weight-400 font-14px m-0">Total Services</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card primary-border-hover">
+                        <div class="card-body">
+                            <div class="salesCard d-flex align-items-center gap-3">
+                                <div class="icon flex-shrink-0">
                                     <img src="assets/images/icons/Total Orders.svg" alt="">
                                 </div>
                                 <div>
