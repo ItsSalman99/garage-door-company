@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->longText('image')->nullable();
             $table->string('name')->nullable();
+            $table->unsignedBigInteger('categoryId')->nullable();
+            $table->foreign('categoryId')->references('id')->on('categories')->onDelete('cascade');
+            $table->string('market')->nullable();
+            $table->boolean('is_emergency')->default(false);
+            $table->longText('description')->nullable();
             $table->boolean('status')->default(true);
-            // $table->string('type')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('services');
     }
 };

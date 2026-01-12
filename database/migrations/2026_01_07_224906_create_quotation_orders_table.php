@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreign('technician_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('product_id')->nullable();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->unsignedBigInteger('service_id')->nullable();
+            $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->string('price')->nullable();
             $table->integer('quantity')->default(1);
             $table->string('total')->nullable();
