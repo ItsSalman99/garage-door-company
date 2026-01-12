@@ -47,7 +47,8 @@ class AuthenticationController extends Controller
             ]);
         }
 
-        if($request->login_as != 'Technician')
+
+        if($request->login_as != 'admin' && $request->login_as != 'Technician')
         {
             $checkUser = User::where('id', $request->id)->first();
             // dd($checkUser);

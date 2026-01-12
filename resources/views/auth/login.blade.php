@@ -5,6 +5,7 @@
         <div class="right-box d-flex align-items-center order-1 order-lg-0 ">
             @php
                 $loginas = (request()->login_as) ? request()->login_as : $login_as
+
             @endphp
             <div>
                 {{-- <img src="assets/images/logo.svg" alt="" class="width-50 width-md-40 mx-auto mb-3"> --}}
