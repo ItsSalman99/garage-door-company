@@ -152,7 +152,6 @@ class ProductSeeder extends Seeder
         foreach ($products as $categoryName => $items) {
 
             $category = Category::where('name', $categoryName)
-                ->where('type', 'product')
                 ->first();
 
             if (! $category) {

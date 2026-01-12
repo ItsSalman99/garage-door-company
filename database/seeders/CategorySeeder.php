@@ -13,7 +13,7 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $categories = [
+        $productCategories = [
             'Garage Doors',
             'Openers',
             'Springs',
@@ -27,17 +27,28 @@ class CategorySeeder extends Seeder
             'Weather & Insulation',
             'Commercial',
             'Drums',
-            'Shafts & Tubes'
+            'Shafts & Tubes',
+            'Repairs',
+            'Installations & Replacement',
+            'Maintenance',
+            'Emergency',
+            'Smart / Home Automation',
+            'Safety & Security',
+            'Commercial',
+            'Specialty & Custom',
+            'Inspection & Consultation'
         ];
 
-        foreach ($categories as $category) {
+        foreach ($productCategories as $category) {
             Category::updateOrCreate(
                 ['name' => $category],
                 [
-                    'status' => true,
-                    'type'   => 'product'
+                    'status' => true
                 ]
             );
         }
+
+
     }
 }
+
