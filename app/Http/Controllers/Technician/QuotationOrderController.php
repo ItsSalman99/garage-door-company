@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\QuotationOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 class QuotationOrderController extends Controller
 {
@@ -88,4 +90,15 @@ class QuotationOrderController extends Controller
         return view('portal.quotations.show', get_defined_vars());
 
     }
+
+    public function generateBill($id)
+    {
+        $quotation = QuotationOrder::where('id', $id)->first();
+
+        $pdf = Pdf::loadView('pdf.quotation-invoice', ['quotation' => $quotation]);
+
+        return $pdf->stream('invoice.pdf');
+
+    }
+
 }

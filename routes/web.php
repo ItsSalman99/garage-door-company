@@ -16,7 +16,7 @@ Route::post('/login', [AuthenticationController::class, 'loginStore'])->name('lo
 Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout');
 
 
-Route::get('/admin/login', [AuthenticationController::class, 'adminLogin'])->name('login');
+Route::get('/admin/login', [AuthenticationController::class, 'adminLogin'])->name('adminlogin');
 
 Route::prefix('portal')
     ->middleware('auth-check')
@@ -81,6 +81,7 @@ Route::prefix('portal')
                     ->name('show');
                 Route::post('/store', [QuotationOrderController::class, 'store'])
                     ->name('store');
-
+                Route::get('/generateBill/{id}', [QuotationOrderController::class, 'generateBill'])
+                    ->name('generateBill');
             });
     });

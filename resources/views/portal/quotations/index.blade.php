@@ -64,6 +64,9 @@
                                                     <li>
                                                         <a href="{{ route('portal.quotation.show', ['id' => $item->id]) }}" class="dropdown-item">View Details</a>
                                                     </li>
+                                                    <li>
+                                                        <a href="{{ route('portal.quotation.generateBill', ['id' => $item->id]) }}" class="dropdown-item">Generate Pdf Bill</a>
+                                                    </li>
                                                 </ul>
                                             </li>
                                         </ul>
