@@ -12,6 +12,7 @@ class QuotationOrder extends Model
         'company_id',
         'technician_id',
         'product_id',
+        'service_id',
         'price',
         'quantity',
         'total',
@@ -27,6 +28,11 @@ class QuotationOrder extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
     }
 
     public function company()
