@@ -45,7 +45,7 @@
                                     <img src="{{ asset('assets/images/icons/Total Customers.svg') }}" alt="">
                                 </div>
                                 <div>
-                                    <h3 class="font-weight-600 font-25px font-md-32px mb-1">0</h3>
+                                    <h3 class="font-weight-600 font-25px font-md-32px mb-1">{{ $totalTechnicians }}</h3>
                                     <h6 class=" font-weight-400 font-14px m-0">Total Technicians</h6>
                                 </div>
                             </div>
@@ -60,7 +60,7 @@
                                     <img src="assets/images/icons/Total Revenue.svg" alt="">
                                 </div>
                                 <div>
-                                    <h3 class="font-weight-600 font-25px font-md-32px mb-1">0</h3>
+                                    <h3 class="font-weight-600 font-25px font-md-32px mb-1">{{ $totalProducts }}</h3>
                                     <h6 class=" font-weight-400 font-14px m-0">Total Product</h6>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@
                                     <img src="assets/images/icons/Total Orders.svg" alt="">
                                 </div>
                                 <div>
-                                    <h3 class="font-weight-600 font-25px font-md-32px mb-1">0</h3>
+                                    <h3 class="font-weight-600 font-25px font-md-32px mb-1">{{ $totalQuotations }}</h3>
                                     <h6 class=" font-weight-400 font-14px m-0">Total Qoutations</h6>
 
                                 </div>
